@@ -15,7 +15,15 @@ contract JoyToken{
         uint256 _value
     );
 
+    event Approval(
+        // The owner account approves the spender account to spend value amount of JoyTokens
+        address indexed _owner,
+        address indexed _spender,
+        uint256 _value
+    );
+
     mapping(address => uint256) public balanceOf;
+    mapping(address => mapping(address => uint256)) public allowance; // Nested mapping
 
     constructor(uint256 _initialSupply) public {
         // We need to allocate this inital supply to a default admin account
@@ -37,7 +45,31 @@ contract JoyToken{
 
         // Return a boolean denoting true for a successful transaction
         return true;
-    } 
+    }
+    // Delegated Transfer
+    function approve(address _spender, uint256 _value) public returns (bool success) {
+        // allowance
+        allowance[msg.sender][_spender] = _value;
+
+        // Approval event
+        emit Approval(msg.sender, _spender, _value);
+        return true;
+    }
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
+
+        require(balanceOf[_from] >= _value);
+        require(allowance[_from][msg.sender] >= _value);
+        
+        // update balance
+        balanceOf[_from] -= _value;
+        balanceOf[_to] += _value;
+
+        // update allowance
+        allowance[_from][msg.sender] -= _value;
+
+        emit Transfer(_from, _to, _value);
+        return true;
+    }
 }
 
 
