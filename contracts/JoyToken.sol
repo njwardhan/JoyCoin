@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
+// Smart contract that handles the ERC20 standard creation
 contract JoyToken{   
 
     string public name = "JoyCoin";

@@ -3,6 +3,7 @@ pragma solidity >=0.4.22 <0.9.0;
 
 import "./JoyToken.sol";
 
+// Smart contract that handles the token sale
 contract JoyTokenSale{
     address admin;
     JoyToken public tokenContract;
