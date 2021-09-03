@@ -54,8 +54,9 @@ App = {
                toBlock: 'latest',
            }).watch(function(error, event) {
                console.log("event triggered", event);
-               return App.render();
+               
            })
+           App.render();
        })
    },
 
@@ -138,4 +139,4 @@ $(function() {
     $(window).load(function() {
         App.init();
     })
-});  
+});
