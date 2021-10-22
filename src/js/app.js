@@ -74,13 +74,13 @@ App = {
     content.hide();
 
     // Load account data
-    web3.eth.getCoinbase(function(err, account) {
-        if(err === null) {
-            console.log("account:", account);
-            App.account = account;
-            $('#accountAddress').html("Your Account : " + account);
-        }
-    })
+    if(window.ethereum){
+        window.ethereum.request({method: 'eth_requestAccounts'}).then(function(acc){
+            App.account = acc[0];
+            console.log("account:", App.account);
+            $('#accountAddress').html("Your Account : " + App.account);
+        })
+    }
     
     // Load token sale contract
     App.contracts.JoyTokenSale.deployed().then(function(instance) {
@@ -94,7 +94,7 @@ App = {
       }).then(function(tokensSold) {
           App.tokensSold = tokensSold.toNumber();
           $('.tokens-sold').html(App.tokensSold);
-          console.log('njw', App.tokensSold);
+          console.log('tokensSold', App.tokensSold);
           $('.tokens-available').html(App.tokensAvailable);
 
           var progressPercent = (Math.ceil(App.tokensSold) / App.tokensAvailable) * 100;

@@ -44,19 +44,14 @@ module.exports = {
       network_id: "*" // This way it matches any network id
     },
     rinkeby: {
-      //host: "localhost",
+      host: "localhost",
       provider: function() {
         return new HDWalletProvider(
           process.env.MNEMONIC,
           `https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}`
         )
-      },
-      /* provider: () => new HDWalletProvider({
-        privateKeys: private_key,
-        providerOrUrl: "https://rinkeby.infura.io/v3/6dad0563a621491cafdfcc40aa89f58c",
-        numberOfAddresses: 1
-      }), */ 
-      //port: 8545, //Geth port
+      }, 
+      port: 8545, //Geth port
       network_id: 4, // 4 is the number for Rinkeby
       gas: 4700000,
       timeoutBlocks: 200
