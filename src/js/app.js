@@ -78,7 +78,7 @@ App = {
         window.ethereum.request({method: 'eth_requestAccounts'}).then(function(acc){
             App.account = acc[0];
             console.log("account:", App.account);
-            $('#accountAddress').html("Your Account : " + App.account);
+            $('#accountAddress').html("Current Account : " + App.account);
         })
     }
     
