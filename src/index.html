@@ -1,32 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" style="background-color:rgb(184, 184, 184);">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, inital-scale=1">
         <title>Joy Token ICO Sale</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
     </head>
-    <div class="lines">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-    </div>  
+
     <body>
-        <img src="aed687d9a1b7ec46a65c65fdc7bbae1a.jpg" alt="Poverty" style="width:700px; position:absolute; left:150px; top:90px;"> 
+        <div id="particles-js"></div>
+
+        <script src="particles.js"></script>
+        <script src="app.js"></script>
     </body>
-    <a href="" class="btn btn-info" style="color:#030d1c; position:absolute; right:280px; top:100px; color:white; font-size:17px;">Whitepaper</a>
-    <a href="mailto:njwardhan@gmail.com" class="btn btn-info" style="color:#030d1c; position:absolute; right:160px; top:100px; color:white; font-size:17px;">Email Us</a>
+    
     <body>
-        <div class="container" style="width: 450px; position:absolute; left:280px; top:610px;">
+        <img id="logo" src="aed687d9a1b7ec46a65c65fdc7bbae1a.jpg" alt="Logo"> 
+    </body>
+    <a id="email" href="mailto:njwardhan@gmail.com" class="btn btn-info">Email Us</a>
+    <a id="wp" href="" class="btn btn-info">Whitepaper</a>
+    <a id="source" href="https://github.com/njwardhan/JoyCoin" class="btn btn-info">Source Code</a>
+    <body>
+        <div id="desc" class="container">
             <center>
             <h1><p style="font-family:Garamond; font-size:80px; font-weight:700;">JoyCoin</p></h1>
-            <p style="font-size:24px;">Spreading Joy One Token At A Time :)</p>
+            <p style="font-size:26px;">joy in every token :)</p>
             </center>
         </div>
     </body>
     <body>
-        <div class="container" style="width: 800px; position:absolute; right:150px; top:210px;">
+        <div id="ico" class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <h1><br><p align="center">Initial Coin Offering</p></h1>
@@ -56,13 +61,13 @@
                         <div id="progress" class="progress-bar progress-bar striped active" aria-valuemin="0" aria-valuemax="100" style="width:300%; background-color:#030d1c !important;">
                         </div>
                     </div>
-                    <p><center><span class="tokens-sold"></span> / <span class="tokens-available"></span> tokens sold</center></p>
+                    <p><h5><center><span class="tokens-sold"></span> / <span class="tokens-available"></span>tokens sold</center></h5></p>
                     <hr>
                     <br>
-                    <center>
+                    <center><h5>
                         <p id="accountAddress"></p>
                         Current JC balance: <span class="joy-balance"></span>&nbsp;
-                    </center>
+                    </center></h5>
                 </div>
             </div>
         </div>

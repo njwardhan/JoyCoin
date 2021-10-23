@@ -17,6 +17,7 @@
         "truffle-hdwallet-provider": "^1.0.6"
     },
     "dependencies": {
-        "@truffle/hdwallet-provider": "^1.0.37"
+        "@truffle/hdwallet-provider": "^1.0.37",
+        "particles.js": "^2.0.0"
     }
 }
