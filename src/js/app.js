@@ -69,8 +69,10 @@ App = {
 
     var loader = $('#loader');
     var content = $('#content');
+    var info = $('#info');
 
-    loader.show();
+    loader.hide();
+    info.show();
     content.hide();
 
     // Load account data
@@ -109,6 +111,7 @@ App = {
             
             App.loading = false;
             loader.hide();
+            info.hide();
             content.show();
             
         })
