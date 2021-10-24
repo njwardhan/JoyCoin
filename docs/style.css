@@ -104,17 +104,18 @@
 @media screen and (min-width:700px) and (min-height:700px) {
     #logo {
         display: block;
-        width: 700px;
+        width: 35%;
         position:absolute;
-        left:150px;
-        top:90px;
+        left:8%;
+        top:10%;
     }
     #email {
         display: block;
         color:#030d1c;
         position:absolute;
-        right:160px;
-        top:100px;
+        width:7%;
+        right:8%;
+        top:11%;
         color:white;
         font-size:17px;
     }
@@ -122,34 +123,36 @@
         display: block;
         color:#030d1c;
         position:absolute;
-        right:280px;
-        top:100px;
+        width:7%;
+        right:16.501%;
+        top:11%;
         color:white;
         font-size:17px;
     }
     #source {
         display: block;
         color:#030d1c;
+        width:7%;
         position:absolute;
-        right:423px;
-        top:100px;
+        right:25%;
+        top:11%;
         color:white;
         font-size:17px;
     }
     #desc {
         display: block;
-        width: 450px;
+        width: 30%;
         position:absolute;
-        left:280px;
-        top:610px;
+        left:10.4%;
+        top:63%;
     }
     #ico {
         display:block;
-        width: 800px;
+        width: 40%;
         position:absolute;
         text-align: center;
-        top:210px;
-        right:150px;
+        top:20%;
+        right:7.2%;
         overflow-x: hidden;
         overflow-y: auto;
     }
