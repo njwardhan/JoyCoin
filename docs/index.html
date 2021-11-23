@@ -22,7 +22,21 @@
             <div id="desc" class="container">
                 <center>
                 <h1><p style="font-family:Garamond; font-size:80px; font-weight:700;">JoyCoin</p></h1>
-                <p style="font-size:26px;">Joy In Every Token :)</p>
+                <p id="type-animation" style="font-size:26px;"></p>
+                <script>
+                var i = 0;
+                var txt = 'Joy In Every Token :)';
+                var speed = 100; /* Speed/Duration of the effect in milliseconds */
+
+                function typeWriter() {
+                    if (i < txt.length) {
+                        document.getElementById("type-animation").innerHTML += txt.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, speed);
+                    }
+                }
+                typeWriter();
+                </script>
                 </center>
             </div>
         </div>
