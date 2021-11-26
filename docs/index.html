@@ -1,102 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, inital-scale=1">
-        <title>Joy Token ICO Sale</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-    </head>
 
-    <body>
-        <div id="particles-js"></div>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, inital-scale=1">
+    <title>Joy Token ICO Sale</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
 
-        <script src="particles.js"></script>
-        <script src="app.js"></script>
-    </body>
+<body>
+    <div id="particles-js"></div>
+
+    <script src="particles.js"></script>
+    <script src="app.js"></script>
+
 
     <div class="parent-flex">
-        <div class= "flex-one">
-            <img id="logo" src="aed687d9a1b7ec46a65c65fdc7bbae1a.jpg" alt="Logo"> 
+        <div class="flex-one">
+            <img id="logo" src="logo.jpg" alt="Logo">
             <div id="desc" class="container">
                 <center>
-                <h1><p style="font-family:Garamond; font-size:80px; font-weight:700;">JoyCoin</p></h1>
-                <p id="type-animation" style="font-size:26px;"></p>
-                <script>
-                var i = 0;
-                var txt = 'Joy In Every Token :)';
-                var speed = 100; /* Speed/Duration of the effect in milliseconds */
+                    <h1>
+                        <p style="font-family:Garamond; font-size:80px; font-weight:700;">JoyCoin</p>
+                    </h1>
+                    <p id="type-animation" style="font-size:26px;"></p>
+                    <script>
+                        var i = 0;
+                        var txt = 'Joy In Every Token :)';
+                        var speed = 100; /* Speed/Duration of the effect in milliseconds */
 
-                function typeWriter() {
-                    if (i < txt.length) {
-                        document.getElementById("type-animation").innerHTML += txt.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
-                </script>
+                        function typeWriter() {
+                            if (i < txt.length) {
+                                document.getElementById("type-animation").innerHTML += txt.charAt(i);
+                                i++;
+                                setTimeout(typeWriter, speed);
+                            }
+                        }
+                        typeWriter();
+                    </script>
                 </center>
             </div>
         </div>
-            
+
         <div class="flex-two">
             <div class="flex-child-one">
-                <a id="email" href="mailto:njwardhan@gmail.com" class="btn btn-info" style="min-width: 120px; max-height:100px;">Email Us</a>
+                <a id="email" href="mailto:njwardhan@gmail.com" class="btn btn-info"
+                    style="min-width: 120px; max-height:100px;">Email Us</a>
                 <a id="wp" href="" class="btn btn-info" style="min-width: 120px; max-height:100px">Whitepaper</a>
-                <a id="source" href="https://github.com/njwardhan/JoyCoin" class="btn btn-info" style="min-width: 120px; max-height:100px">Source</a>
+                <a id="source" href="https://github.com/njwardhan/JoyCoin" class="btn btn-info"
+                    style="min-width: 120px; max-height:100px">Source</a>
             </div>
-            <body>
-                <div id="ico" class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1><br><p align="center">Initial Coin Offering</p></h1>
-                            <hr/>
-                        </div>
-                        <div id="loader">
-                            <p class="text-center">Loading ..</p>
-                        </div>
-                        <div id="info">
-                            <p class="text-center">Looking for a web3 instance ..</p>
-                        </div>
-                        <div id="content" class="text-centre" style="display: none">
-                            <p><center>
+
+
+            <div id="ico" class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1><br>
+                            <p align="center">Initial Coin Offering</p>
+                        </h1>
+                        <hr />
+                    </div>
+                    <div id="loader">
+                        <p class="text-center">Loading ..</p>
+                    </div>
+                    <div id="info">
+                        <p class="text-center">Looking for a web3 instance ..</p>
+                    </div>
+                    <div id="content" class="text-centre" style="display: none">
+                        <p>
+                            <center>
                                 <h4> Be a part of the revolution! </h4><br>
                                 <h5>Token price: <span class="token-price"></span> Rinkeby Ether </h5><br>
-                            </center></p>
-                            <form onSubmit= "App.buyTokens(); return false;" role="form">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <input id="numberOfTokens" class="form-control input-lg" type="number" name="number" value="1" min="1" pattern="[0-9]"> 
+                            </center>
+                        </p>
+                        <form onSubmit="App.buyTokens(); return false;" role="form">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input id="numberOfTokens" class="form-control input-lg" type="number" name="number"
+                                        value="1" min="1" pattern="[0-9]">
                                     </input>
                                     <span class="input-group-btn">
-                                        <button type="submit" class="btn btn-primary btn-lg";">Buy Tokens</button>
+                                        <button type="submit" class="btn btn-primary btn-lg" ;">Buy Tokens</button>
                                     </span>
-                                    </div>
-                                </div>
-                            </form>
-                            <br>
-                            <div class="progress">
-                                <div id="progress" class="progress-bar progress-bar striped active" aria-valuemin="0" aria-valuemax="100" style="width:300%; background-color:#030d1c !important;">
                                 </div>
                             </div>
-                            <p><h5><center><span class="tokens-sold"></span> / <span class="tokens-available"></span> tokens sold</center></h5></p>
-                            <hr>
-                            <br>
-                            <center><h5>
+                        </form>
+                        <br>
+                        <div class="progress">
+                            <div id="progress" class="progress-bar progress-bar striped active" aria-valuemin="0"
+                                aria-valuemax="100" style="width:300%; background-color:#030d1c !important;">
+                            </div>
+                        </div>
+                        <p>
+                        <h5>
+                            <center><span class="tokens-sold"></span> / <span class="tokens-available"></span> tokens
+                                sold</center>
+                        </h5>
+                        </p>
+                        <hr>
+                        <br>
+                        <center>
+                            <h5>
                                 <p id="accountAddress"></p>
                                 Current JC balance: <span class="joy-balance"></span>&nbsp;
-                            </center></h5>
-                        </div>
+                        </center>
+                        </h5>
                     </div>
                 </div>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-                <script src="js/bootstrap.min.js"></script>
-                <script src="js/web3.min.js"></script>
-                <script src="js/truffle-contract.min.js"></script> 
-                <script src="js/app.js"></script>      
-            </body>
+            </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/web3.min.js"></script>
+            <script src="js/truffle-contract.min.js"></script>
+            <script src="js/app.js"></script>
         </div>
-    </div>    
+    </div>
+</body>
+
 </html>
