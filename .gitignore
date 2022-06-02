@@ -2,3 +2,5 @@ node_modules
 .gitignore
 .env
 deployfrontend.sh
+test/JoyToken_save.js
+test/JoyTokenSale_save.js
