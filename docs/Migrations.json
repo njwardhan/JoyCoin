@@ -53,7 +53,7 @@
   "sourceMap": "66:352:2:-;;;113:10;90:33;;;;;;;;;;;;;;;;;;;;66:352;8:9:-1;5:2;;;30:1;27;20:12;5:2;66:352:2;;;;;;;",
   "deployedSourceMap": "66:352:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;66:352:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;127:36;;;:::i;:::-;;;;;;;;;;;;;;;;;;;90:33;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;313:103;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;313:103:2;;;;;;;;;;;;;;;;;:::i;:::-;;127:36;;;;:::o;90:33::-;;;;;;;;;;;;;:::o;313:103::-;225:5;;;;;;;;;;;211:19;;:10;:19;;;196:101;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;402:9;375:24;:36;;;;313:103;:::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\ncontract Migrations {\n  address public owner = msg.sender;\n  uint public last_completed_migration;\n\n  modifier restricted() {\n    require(\n      msg.sender == owner,\n      \"This function is restricted to the contract's owner\"\n    );\n    _;\n  }\n\n  function setCompleted(uint completed) public restricted {\n    last_completed_migration = completed;\n  }\n}\n",
-  "sourcePath": "/home/njwardhan/Desktop/git/Self/JoyCoin/contracts/Migrations.sol",
+  "sourcePath": "/home/njwardhan/Desktop/Git/Self/JoyCoin/contracts/Migrations.sol",
   "ast": {
     "absolutePath": "project:/contracts/Migrations.sol",
     "exportedSymbols": {
@@ -918,6 +918,12 @@
       "address": "0x9fdb5bC62e85B47B22102860d7A62f9DC9478c37",
       "transactionHash": "0x1c656c47a5fb299cd873bb0dda2144b70b21dd0a60758571b4d9710da0304ddc"
     },
+    "5": {
+      "events": {},
+      "links": {},
+      "address": "0x27A10C73dba64CDc89826efBc50f8bf31895D324",
+      "transactionHash": "0xd641dfc89a3c4067159fb462a0b0b898cd8a10625671a1af7349838a24aca0af"
+    },
     "5777": {
       "events": {},
       "links": {},
@@ -926,7 +932,7 @@
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-10-22T07:35:46.405Z",
+  "updatedAt": "2022-11-18T18:04:15.522Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

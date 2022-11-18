@@ -113,7 +113,7 @@
   "sourceMap": "138:1943:1:-;;;333:345;8:9:-1;5:2;;;30:1;27;20:12;5:2;333:345:1;;;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;333:345:1;;;;;;;;;;;;;;;;;;;;;;;;;506:10;498:5;;:18;;;;;;;;;;;;;;;;;;587:14;571:13;;:30;;;;;;;;;;;;;;;;;;660:11;647:10;:24;;;;333:345;;138:1943;;;;;;",
   "deployedSourceMap": "138:1943:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;929:636;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;929:636:1;;;;;;;;;;;;;;;;;:::i;:::-;;1604:474;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1604:474:1;;;:::i;:::-;;250:25;;8:9:-1;5:2;;;30:1;27;20:12;5:2;250:25:1;;;:::i;:::-;;;;;;;;;;;;;;;;;;;184:29;;8:9:-1;5:2;;;30:1;27;20:12;5:2;184:29:1;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;219:25;;8:9:-1;5:2;;;30:1;27;20:12;5:2;219:25:1;;;:::i;:::-;;;;;;;;;;;;;;;;;;;929:636;1068:37;1077:15;1094:10;;1068:8;:37::i;:::-;1055:9;:50;1047:59;;;;;;1231:15;1189:13;;;;;;;;;;;:23;;;1221:4;1189:38;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1189:38:1;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1189:38:1;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1189:38:1;;;;;;;;;;;;;;;;:57;;1181:66;;;;;;1336:13;;;;;;;;;;;:22;;;1359:10;1371:15;1336:51;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1336:51:1;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1336:51:1;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1336:51:1;;;;;;;;;;;;;;;;1328:60;;;;;;1460:15;1446:10;;:29;;;;;;;;;;;1525:33;1530:10;1542:15;1525:33;;;;;;;;;;;;;;;;;;;;;;;;;;;;929:636;:::o;1604:474::-;1687:5;;;;;;;;;;;1673:19;;:10;:19;;;1665:28;;;;;;1786:13;;;;;;;;;;;:22;;;1809:5;;;;;;;;;;;1816:13;;;;;;;;;;;:23;;;1848:4;1816:38;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1816:38:1;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1816:38:1;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1816:38:1;;;;;;;;;;;;;;;;1786:69;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1786:69:1;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1786:69:1;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1786:69:1;;;;;;;;;;;;;;;;1778:78;;;;;;1959:13;;;;;;;;;;;:22;;;1982:5;;;;;;;;;;;1989:13;;;;;;;;;;;:23;;;2021:4;1989:38;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1989:38:1;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1989:38:1;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1989:38:1;;;;;;;;;;;;;;;;1959:69;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1959:69:1;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1959:69:1;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1959:69:1;;;;;;;;;;;;;;;;;1604:474::o;250:25::-;;;;:::o;184:29::-;;;;;;;;;;;;;:::o;219:25::-;;;;:::o;785:120::-;842:6;872:1;867;:6;:30;;;;896:1;891;886;882;:5;878:9;;;877:15;;;;;;:20;867:30;859:39;;;;;;785:120;;;;:::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\nimport \"./JoyToken.sol\";\n\n// Smart contract that handles the token sale\ncontract JoyTokenSale{\n    address admin;\n    JoyToken public tokenContract;\n    uint256 public tokenPrice;\n    uint256 public tokensSold;\n\n    event Sell(address _buyer, uint256 _amount);\n \n    constructor(JoyToken _tokenContract, uint256 _tokenPrice) public {\n        // Admin (external account connected to the blockcahin having special previleges)\n        admin = msg.sender;\n\n        // Interact with the Token contract\n        tokenContract = _tokenContract;\n\n        // Token price (in Ethers)\n        tokenPrice = _tokenPrice;\n    }\n\n    // Safe Solidity multiplication: https://github.com/dapphub/ds-math/blob/master/src/math.sol#L25\n    function multiply(uint x, uint y) internal pure returns (uint z){\n        require(y == 0 || (z = x * y) / y == x);\n    }\n\n    // Buy tokens\n    function buyTokens(uint256 _numberOfTokens) public payable{\n\n        // Require that value is equal to tokens\n        require(msg.value == multiply(_numberOfTokens, tokenPrice));\n\n        // Require that there are enough tokens in the contract\n        require(tokenContract.balanceOf(address(this)) >= _numberOfTokens);\n\n        // Require that a transfer is successful - Buy functionality!\n        require(tokenContract.transfer(msg.sender, _numberOfTokens));\n\n        // Keep track of number of tokens sold\n        tokensSold += _numberOfTokens;\n\n        // Trigger the sell event\n        emit Sell(msg.sender, _numberOfTokens);\n    }\n\n    // Ending Token JoyTokenSale\n    function endSale() public {\n        // Require admin\n        require(msg.sender == admin);\n\n        // Transfer remaning JoyTokens (from this contract) back to admin\n        require(tokenContract.transfer(admin, tokenContract.balanceOf(address(this))));\n        \n        // One more transfer is done to ensure that this contract has 0 balance .. \n        tokenContract.transfer(admin, tokenContract.balanceOf(address(this)));\n\n        // Destroy this smart contract :(\n    }\n\n}   \n",
-  "sourcePath": "/home/njwardhan/Desktop/git/Self/JoyCoin/contracts/JoyTokenSale.sol",
+  "sourcePath": "/home/njwardhan/Desktop/Git/Self/JoyCoin/contracts/JoyTokenSale.sol",
   "ast": {
     "absolutePath": "project:/contracts/JoyTokenSale.sol",
     "exportedSymbols": {
@@ -4413,6 +4413,12 @@
       "address": "0x69D9b02033597b3a283C26c607972B6CaEA2dceF",
       "transactionHash": "0x0ae2a98c81998fd229c2d1d1004d0e6acfcada0a03e3ab64e1975a93b752cc1b"
     },
+    "5": {
+      "events": {},
+      "links": {},
+      "address": "0x4c2604dAdFD737D0DE6E19632f6f8EfC6a56ECd2",
+      "transactionHash": "0x29a51fdf31f0905cc6ebefbf105e66711e73be01580edd30a448dcedc73a8fcb"
+    },
     "5777": {
       "events": {},
       "links": {},
@@ -4421,7 +4427,7 @@
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-10-22T07:35:46.401Z",
+  "updatedAt": "2022-11-18T18:04:15.509Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
